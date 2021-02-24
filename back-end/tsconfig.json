@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "es6",                         
+      "module": "commonjs", 
+      "declaration": true,                   
+      "sourceMap": true,                        
+      "outDir": "build",                        
+      "noImplicitAny": true,                   
+      "baseUrl": "./",                    
+      "esModuleInterop": true,                 
+      "experimentalDecorators": true,       
+      "emitDecoratorMetadata": false,        
+      "resolveJsonModule": true,
+    },
+    "include": [
+      "**/*.ts"
+    ],
+    "exclude": [
+      "./node_modules",
+      "./build"
+    ]
+  }
+  
