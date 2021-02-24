@@ -1,10 +1,14 @@
 import Board from "./Board";
+import { Provider } from 'react-redux';
+import store from './../store';
 
 function App() {
   return (
-    <div className="App">
-      <Board />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Board />
+      </div>
+    </Provider>
   );
 }
 
