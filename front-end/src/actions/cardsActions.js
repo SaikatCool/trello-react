@@ -63,7 +63,7 @@ export const addCard = (name, listId) => {
 }
 
 export const addCardRequest = () => {
-    console.log("Sending Add card request");
+    //console.log("Sending Add card request");
   return {
     type: ADD_CARD_REQUEST
   }
