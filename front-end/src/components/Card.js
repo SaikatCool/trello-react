@@ -48,7 +48,7 @@ const useStyles = makeStyles({
       </CardContent>
       <CardActions>
       { props.showDoneButton ? 
-        <Button variant="contained" onClick={setCardAsDone}>
+        <Button variant="outlined" color="primary" onClick={setCardAsDone}>
           Mark as done
         </Button>
        : null }
