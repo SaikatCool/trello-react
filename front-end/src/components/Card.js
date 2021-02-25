@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   const dispatch = useDispatch();
 
   const setCardAsDone = () => {
-    console.log(props);
+    //Todo: use find by index instead of name 
     const destinationList = props.lists.find((list) => list.name == "Done");
     dispatch(moveCard(props.cardID, destinationList.id));
   }
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h6" component="h2">
           {props.name}
         </Typography>
       </CardContent>

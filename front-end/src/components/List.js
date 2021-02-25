@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import Button from '@material-ui/core/Button';
-import ListItem from '@material-ui/core/ListItem';
 import SimpleCard from './Card';
 import styled from "styled-components";
+import CardCreator from './CardCreator';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +30,9 @@ export default function SimpleList({ name, cards, listID, showAddButton}) {
     <div className={classes.root}>
     <ListContainer>
       <List component="nav" aria-label="main mailbox folders">
-        <h4>{name}</h4>
+      <Typography variant="h5" component="h2">
+          {name}
+        </Typography>
         <div>
             {cards.map((card, cIndex) => (
             <SimpleCard
@@ -41,8 +43,11 @@ export default function SimpleList({ name, cards, listID, showAddButton}) {
                 index={cIndex}
             />
             ))}
+            { showAddButton ? 
+              <CardCreator listID={listID} />
+              : null}
         </div>
-        { showAddButton ?
+        {/* { showAddButton ?
             <Button
                 variant="contained"
                 color="primary"
@@ -51,7 +56,7 @@ export default function SimpleList({ name, cards, listID, showAddButton}) {
             >
             Add new task
         </Button> : null
-        }
+        } */}
       </List>
       </ListContainer>
     </div>

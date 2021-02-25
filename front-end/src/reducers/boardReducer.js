@@ -4,7 +4,10 @@ import {
     FETCH_BOARD_FAILURE,
     MOVE_CARD_REQUEST,
     MOVE_CARD_FAILURE,
-    MOVE_CARD_SUCCESS
+    MOVE_CARD_SUCCESS,
+    ADD_CARD_REQUEST,
+    ADD_CARD_FAILURE,
+    ADD_CARD_SUCCESS
   } from './../actions/types'
   
   const initialState = {
@@ -33,22 +36,39 @@ import {
           error: action.payload
         };
        case MOVE_CARD_REQUEST:
-           return state;
+          return state;
         case MOVE_CARD_FAILURE:
-            return state;
+          return state;
         case MOVE_CARD_SUCCESS:
-            {
-                let newBoard = Object.assign({}, state.board);;               
-                let sourceList = newBoard.lists.find((list) => list.name == "To Do");
-                let card = sourceList.cards.find(card => card.id == action.payload.id)
-                let index = sourceList.cards.indexOf(card);
-                sourceList.cards.splice(index, 1);
-                let destinationList = newBoard.lists.find((list) => 
-                  list.name == "Done");
-                destinationList.cards.push(card);
+          {
+              let newBoard = Object.assign({}, state.board);;               
+              let sourceList = newBoard.lists.find((list) => list.name == "To Do");
+              let card = sourceList.cards.find(card => card.id == action.payload.id)
+              let index = sourceList.cards.indexOf(card);
+              sourceList.cards.splice(index, 1);
+              let destinationList = newBoard.lists.find((list) => 
+                list.name == "Done");
+              destinationList.cards.push(card);
 
-                return {...state, board : newBoard}
-            }
+              return {...state, board : newBoard}
+          }
+        case ADD_CARD_REQUEST:
+            return state;
+        case ADD_CARD_FAILURE:
+            return state;
+        case ADD_CARD_SUCCESS:
+          {
+              const newCard = {
+                name: action.payload.name,
+                id: action.payload.id
+              };
+
+              let newBoard = Object.assign({}, state.board);;               
+              let list = newBoard.lists.find((list) => list.id == action.payload.listId);
+              list.cards.push(newCard);
+
+              return {...state, board : newBoard}
+          }
       default: return state;
     }
   }
