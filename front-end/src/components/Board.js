@@ -1,7 +1,7 @@
 import React,  { useEffect } from 'react'
 import styled from "styled-components";
 import SimpleList from './List';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { fetchBoard } from '../actions/boardActions';
 
 const ListsContainer = styled.div`

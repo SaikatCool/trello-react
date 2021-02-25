@@ -5,11 +5,14 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { connect, useDispatch } from 'react-redux';
+import { moveCard } from './../actions/cardsActions';
 
 const useStyles = makeStyles({
   root: {
     minWidth: 230,
-    maxWidth: 230
+    maxWidth: 230,
+    margin: 5
   },
   bullet: {
     display: 'inline-block',
@@ -24,24 +27,40 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard({cardID, name, showDoneButton}) {
+  function SimpleCard (props) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
+
+  const dispatch = useDispatch();
+
+  const setCardAsDone = () => {
+    console.log(props);
+    const destinationList = props.lists.find((list) => list.name == "Done");
+    dispatch(moveCard(props.cardID, destinationList.id));
+  }
 
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h2">
-          {name}
+          {props.name}
         </Typography>
       </CardContent>
       <CardActions>
-      { showDoneButton ? 
-        <Button variant="contained">
+      { props.showDoneButton ? 
+        <Button variant="contained" onClick={setCardAsDone}>
           Mark as done
         </Button>
        : null }
       </CardActions>
     </Card>
   );
+};
+
+const mapStateToProps = state => {
+  return {
+    lists: state.board.board.lists
+  }
 }
+
+export default connect(mapStateToProps)(SimpleCard);

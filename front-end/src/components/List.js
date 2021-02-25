@@ -32,12 +32,13 @@ export default function SimpleList({ name, cards, listID, showAddButton}) {
       <List component="nav" aria-label="main mailbox folders">
         <h4>{name}</h4>
         <div>
-            {cards.map((card) => (
+            {cards.map((card, cIndex) => (
             <SimpleCard
                 cardID={card.id}
                 name={card.name}
                 key={card.id}
                 showDoneButton={name=="To Do" ? true : false}
+                index={cIndex}
             />
             ))}
         </div>
@@ -56,3 +57,4 @@ export default function SimpleList({ name, cards, listID, showAddButton}) {
     </div>
   );
 }
+
