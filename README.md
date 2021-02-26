@@ -111,5 +111,7 @@ Frontend is built on React with Redux. The Frontend interacts with the backend t
 
  - Add further tests
  - Convert frontend to TypeScript code
- - Auto update of board
  - Implement static code analysis
+ - Handle error scenarios
+ - Implement progress message in the UI during the API calls
+ - Auto update of board
