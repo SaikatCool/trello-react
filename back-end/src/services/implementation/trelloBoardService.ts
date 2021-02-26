@@ -4,7 +4,7 @@ import { IBoard } from "./../../model/board";
 import { IBoardService } from "./../interfaces/boardService";
 import { config } from "./../../config/config";
 import { IList } from "./../../model/list";
-import { ICard } from "src/model/card";
+import { ICard } from "./../../model/card";
 
 
 @injectable()
