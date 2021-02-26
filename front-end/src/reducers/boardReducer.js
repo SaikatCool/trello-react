@@ -14,7 +14,7 @@ import {
     loading: true,
     board: {},
     error: ''
-  }
+  };
   
   const boardReducer = (state = initialState, action) => {
     switch (action.type) {

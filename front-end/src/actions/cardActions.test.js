@@ -15,7 +15,7 @@ describe("Card Actions Tests", () => {
     });
   
     describe("addCard action creator", () => {
-      it("dispatches addCard action and returns data on success", async () => {
+      it("should return ADD_CARD_SUCCESS when addCard action is dispatched and API call is sucessful", async () => {
         mockAxios.post.mockImplementationOnce(() =>
           Promise.resolve({
             "name": "Test",
@@ -31,7 +31,7 @@ describe("Card Actions Tests", () => {
         expect(actions[1].type).toEqual("ADD_CARD_SUCCESS");
       });
   
-      it("tests addCard action and that returns an error", async () => {
+      it("should return ADD_CARD_FAILURE when addCard action is dispatched and API call is returns error", async () => {
         mockAxios.post.mockImplementationOnce(() =>
           Promise.reject({
             error: "Something bad happened :("

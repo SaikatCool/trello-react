@@ -17,6 +17,8 @@ export function Board({state, fetchBoard}) {
     return (
         state.loading ? 
         (<h2>Loading.....</h2>) :
+        state.error != '' ?
+        (<h2>{state.error}</h2>) :
         <div>
             <ListsContainer>
               {state.board.lists.map((list) => {
