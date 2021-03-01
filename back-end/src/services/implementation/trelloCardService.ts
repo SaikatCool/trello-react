@@ -46,7 +46,7 @@ export class TrelloCardService implements ICardService {
             card.id = response.data.id;
             card.name = response.data.name;
         } catch(err){
-            console.log(err);
+            throw err;
         }
         return card;
     }
